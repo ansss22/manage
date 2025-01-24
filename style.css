@@ -121,6 +121,18 @@ svg {
 }
 
 /* Utility classes */
+.visually-hidden {
+  position: absolute;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
 
 .text-primary-400 {
   color: var(--clr-primary-400);
@@ -232,17 +244,86 @@ body {
   box-shadow: 0 1.25em 1em -1em var(--clr-accent-500);
 }
 
-.button[data-type = "inverted"] {
+.button[data-type="inverted"] {
   background-color: var(--clr-accent-100);
   color: var(--clr-accent-400);
 }
 
-.button[data-type = "inverted"]:hover,
-.button[data-type = "inverted"]:focus-visible{
+.button[data-type="inverted"]:hover,
+.button[data-type="inverted"]:focus-visible {
   background-color: var(--clr-accent-100);
   color: var(--clr-accent-300);
 }
 .button:hover,
 .button:focus-visible {
   background-color: var(--clr-accent-300);
+}
+
+.primary-header {
+  margin-top: var(--size-700);
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mobile-nav-toggle {
+  display: none;
+}
+
+.nav-list{
+  font-size: var(--fs-nav);
+}
+
+@media (max-width: 50em) {
+  .primary-navigation {
+    display: none;
+
+    position: absolute;
+    padding: var(--size-700);
+    inset: 7rem var(--size-400) auto;
+    background: var(--clr-neutral-100);
+    border-radius: var(--size-100);
+    box-shadow: 0 0 0.75em rgb(0, 0, 0.05), 0 0 0 1000vmax rgb(0 0 0 / 0.7);
+  }
+
+  /* .primary-navigation::after{
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+  } */
+
+  .nav-list {
+    display: grid;
+    gap: var(--size-400);
+    text-align: center;
+    font-weight: var(--fw-bold);
+  }
+
+  .nav-list a {
+    color: var(--clr-primary-400);
+    text-decoration: none;
+  }
+
+  .nav-list a:hover,
+  .nav-list a:focus {
+    color: var(--clr-accent-400);
+  }
+  .primary-navigation[data-visible] {
+    display: block;
+    position: fixed;
+  }
+  .mobile-nav-toggle {
+    display: block;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    padding: 0.5em;
+  }
+
+  .mobile-nav-toggle .icon-close {
+    display: none;
+  }
 }
